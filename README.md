@@ -2,7 +2,7 @@
 NewHub
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Key Select", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-_G.Key = "https://discord.gg/UmbFBnXAJV"
+_G.Key = "Hello"
 _G.KeyInput = string
 function MakeScriptHub()
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
