@@ -1,366 +1,165 @@
-repeat wait() until game:IsLoaded() wait()
-    game:GetService("Players").LocalPlayer.Idled:connect(function()
-    game:GetService("VirtualUser"):ClickButton2(Vector2.new());
-end);
---<>----<>----<>----<>----<>----<>----<>--
-local Library = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Drifter0507/Shamrock/main/MainLibrary", true))();
-pcall(function()
-    for i, v in pairs(getconnections(game:GetService("ScriptContext").Error)) do
-        v:Disable();
-    end;
-end);
-GunHighlight.FillColor = Color3.fromRGB(248, 241, 174);
-GunHighlight.Adornee = Workspace:FindFirstChild("GunDrop");
-GunHighlight.OutlineTransparency = 1;
-GunHighlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop;
-GunHighlight.RobloxLocked = true;
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483375998",
+	PremiumOnly = false
+})
+local Section = Tab:AddSection({
+	Name = "Can not turn off!!!"
+})
+Tab:AddButton({
+	Name = "ESP",
+	Callback = function()
+      		_G.FriendColor = Color3.fromRGB(0, 0, 255)
+_G.EnemyColor = Color3.fromRGB(255, 0, 0)
+_G.UseTeamColor = true
 
-GunHandleAdornment.Color3 = Color3.fromRGB(248, 241, 174);
-GunHandleAdornment.Transparency = 0.2;
-GunHandleAdornment.Adornee = Workspace:FindFirstChild("GunDrop");
-GunHandleAdornment.AlwaysOnTop = true;
-GunHandleAdornment.AdornCullingMode = Enum.AdornCullingMode.Never;
-GunHandleAdornment.RobloxLocked = true;
+--------------------------------------------------------------------
+local Holder = Instance.new("Folder", game.CoreGui)
+Holder.Name = "ESP"
 
-GunHighlight.Parent = CoreGui;
-GunHandleAdornment.Parent = CoreGui;
+local Box = Instance.new("BoxHandleAdornment")
+Box.Name = "nilBox"
+Box.Size = Vector3.new(1, 2, 1)
+Box.Color3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Box.Transparency = 0.7
+Box.ZIndex = 0
+Box.AlwaysOnTop = false
+Box.Visible = false
 
-local TeleportDict = {
-    ["Lobby"] = Vector3.new(-121.12338256836, 138.27394104004, 38.946128845215),
-    ["Map"] = Vector3.new(-107.90824127197266, 138.34988403320312, -10.622464179992676),
-};
-local TeleportTable = {}
-for i, v in pairs(TeleportDict) do
-    table.insert(TeleportTable,i);
-end;
+local NameTag = Instance.new("BillboardGui")
+NameTag.Name = "nilNameTag"
+NameTag.Enabled = false
+NameTag.Size = UDim2.new(0, 200, 0, 50)
+NameTag.AlwaysOnTop = true
+NameTag.StudsOffset = Vector3.new(0, 1.8, 0)
+local Tag = Instance.new("TextLabel", NameTag)
+Tag.Name = "Tag"
+Tag.BackgroundTransparency = 1
+Tag.Position = UDim2.new(0, -50, 0, 0)
+Tag.Size = UDim2.new(0, 300, 0, 20)
+Tag.TextSize = 15
+Tag.TextColor3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Tag.TextStrokeColor3 = Color3.new(0 / 255, 0 / 255, 0 / 255)
+Tag.TextStrokeTransparency = 0.4
+Tag.Text = "nil"
+Tag.Font = Enum.Font.SourceSansBold
+Tag.TextScaled = false
 
-local Murderer, Sheriff = nil, nil;
-
-function GetMurderer()
-    for i,v in pairs(Players:GetChildren()) do 
-        if v.Backpack:FindFirstChild("Knife") or v.Character:FindFirstChild("Knife") and v.Name == "Tool" then
-            return v.Name;
-        end;
-    end;
-    return nil;
-end;
-
-function GetSheriff()
-    for i,v in pairs(Players:GetChildren()) do 
-        if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") and v.Name == "Tool" then
-            return v.Name;
-        end;
-        return nil;
-    end;
-end;
-local Character = nil;
-local RootPart = nil;
-local Humanoid = nil;
-
-getgenv().WS = 16
-getgenv().JP = 50
-function SetCharVars()
-	Character = Client.Character;
-	Humanoid = Character:FindFirstChild("Humanoid") or Character:WaitForChild("Humanoid");
-	RootPart = Character:FindFirstChild("HumanoidRootPart") or Character:WaitForChild("HumanoidRootPart");
-	if getgenv().Speed then
-		Humanoid.WalkSpeed = getgenv().WS;
-	end;
-	Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-		if getgenv().Speed then
-			Humanoid.WalkSpeed = getgenv().WS;
-		end;
-	end);
-    if getgenv().Jump then
-		Humanoid.WalkSpeed = getgenv().JP;
-	end;
-	Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-		if getgenv().Jump then
-			Humanoid.WalkSpeed = getgenv().JP;
-		end;
-	end);
-end;
-SetCharVars();
-Client.CharacterAdded:Connect(SetCharVars);
-
-local Ws;
-Ws = hookmetamethod(game, "__index", function(self, Value)
-    if tostring(self) == "Humanoid" and tostring(Value) == "WalkSpeed" then
-        return 16;
-    end;
-    return Ws(self, Value);
-end);
-
-local Jp;
-Jp = hookmetamethod(game, "__index", function(self, Value)
-    if tostring(self) == "Humanoid" and tostring(Value) == "WalkSpeed" then
-        return 16;
-    end;
-    return Jp(self, Value);
-end);
-local Window = Library:CreateWindow({Title = "Murder Mystery 2"});
-local Tab1 = Window:CreateTab({Title = "Main", ScrollBar = false});
-local Tab2 = Window:CreateTab({Title = "Economy", ScrollBar = false});
-local Tab3 = Window:CreateTab({Title = "Roles", ScrollBar = false});
-
---<>----<>----<>----<>----<>----<>----<>--
-local ClientSection = Tab1:CreateSection({
-	Title = "Client"
-});
---<>----<>----<>----<>----<>----<>----<>--
-local WorldSection = Tab1:CreateSection({
-	Title = "World"
-});
---<>----<>----<>----<>----<>----<>----<>--
---<>----<>----<>----<>----<>----<>----<>--
-local AutofarmSection = Tab2:CreateSection({
-	Title = "Autofarm"
-});
-local MurderSection = Tab3:CreateSection({
-	Title = "Murderer"
-});
---<>----<>----<>----<>----<>----<>----<>--
-local SheriffSection = Tab3:CreateSection({
-	Title = "Sheriff"
-});
---<>----<>----<>----<>----<>----<>----<>--
-
---<>----<>----<>----<>----<>----<>----<>--
-ClientSection:CreateToggle({
-	Title = "CTRL click tp",
-	Default = false,
-	Callback = function(state)
-        getgenv().ClickTP = state;
-	end;
-});
-Mouse.Button1Down:connect(function()
-    if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end;
-    if not Mouse.Target then return end;
-    if not getgenv().ClickTP then return end;
-    Character:MoveTo(Mouse.Hit.p);
-end)
---<>----<>----<>----<>----<>----<>----<>--
-
-ClientSection:CreateSlider({
-	Title = "WalkSpeed",
-	Min = 16,
-	Max = 200,
-	Default = 16,
-	Callback = function(val)
-		getgenv().WS = tonumber(val)--tonumber(val / 10) or 0;
-        Humanoid.WalkSpeed = val;
-    end
-});
-ClientSection:CreateSlider({
-	Title = "JumpPower",
-	Min = 50,
-	Max = 200,
-	Default = 50,
-	Callback = function(val)
-		getgenv().JP = tonumber(val)--tonumber(val / 10) or 0;
-        Humanoid.JumpPower = val;
-    end
-});
-            local t = Vector3.new();
-            if buttons.W then t = t + (setVec(cf.lookVector)) end;
-            if buttons.S then t = t - (setVec(cf.lookVector)) end;
-            if buttons.A then t = t - (setVec(cf.rightVector)) end;
-            if buttons.D then t = t + (setVec(cf.rightVector)) end;
-            c:TranslateBy(t * step);
-        end;
-    end;
-end);
-
-ClientSection:CreateToggle({
-	Title = "Fly",
-	Default = false,
-	Callback = function(state)
-        getgenv().Flying = state;
-        if getgenv().Flying then
-            StartFly();
-        else
-            EndFly();
-        end;
+local LoadCharacter = function(v)
+	repeat wait() until v.Character ~= nil
+	v.Character:WaitForChild("Humanoid")
+	local vHolder = Holder:FindFirstChild(v.Name)
+	vHolder:ClearAllChildren()
+	local b = Box:Clone()
+	b.Name = v.Name .. "Box"
+	b.Adornee = v.Character
+	b.Parent = vHolder
+	local t = NameTag:Clone()
+	t.Name = v.Name .. "NameTag"
+	t.Enabled = true
+	t.Parent = vHolder
+	t.Adornee = v.Character:WaitForChild("Head", 5)
+	if not t.Adornee then
+		return UnloadCharacter(v)
 	end
-});
+	t.Tag.Text = v.Name
+	b.Color3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	t.Tag.TextColor3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	local Update
+	local UpdateNameTag = function()
+		if not pcall(function()
+			v.Character.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+			local maxh = math.floor(v.Character.Humanoid.MaxHealth)
+			local h = math.floor(v.Character.Humanoid.Health)
+		end) then
+			Update:Disconnect()
+		end
+	end
+	UpdateNameTag()
+	Update = v.Character.Humanoid.Changed:Connect(UpdateNameTag)
+end
 
-ClientSection:CreateSlider({
-	Title = "Fly speed",
-	Min = 20,
-	Max = 150,
-	Default = 50,
-	Callback = function(val)
-        getgenv().FlySpeed = tonumber(val) or 50;
-    end
-});
-            game.Players.LocalPlayer.Character.Humanoid:AddAccessory(accessory)
+local UnloadCharacter = function(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder and (vHolder:FindFirstChild(v.Name .. "Box") ~= nil or vHolder:FindFirstChild(v.Name .. "NameTag") ~= nil) then
+		vHolder:ClearAllChildren()
+	end
+end
+
+local LoadPlayer = function(v)
+	local vHolder = Instance.new("Folder", Holder)
+	vHolder.Name = v.Name
+	v.CharacterAdded:Connect(function()
+		pcall(LoadCharacter, v)
+	end)
+	v.CharacterRemoving:Connect(function()
+		pcall(UnloadCharacter, v)
+	end)
+	v.Changed:Connect(function(prop)
+		if prop == "TeamColor" then
+			UnloadCharacter(v)
+			wait()
+			LoadCharacter(v)
+		end
+	end)
+	LoadCharacter(v)
+end
+
+local UnloadPlayer = function(v)
+	UnloadCharacter(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder then
+		vHolder:Destroy()
+	end
+end
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	spawn(function() pcall(LoadPlayer, v) end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(function(v)
+	pcall(LoadPlayer, v)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(v)
+	pcall(UnloadPlayer, v)
+end)
+
+game:GetService("Players").LocalPlayer.NameDisplayDistance = 0
+
+if _G.Reantheajfdfjdgs then
+    return
+end
+
+_G.Reantheajfdfjdgs = ":suifayhgvsdghfsfkajewfrhk321rk213kjrgkhj432rj34f67df"
+
+local players = game:GetService("Players")
+local plr = players.LocalPlayer
+
+function esp(target, color)
+    if target.Character then
+        if not target.Character:FindFirstChild("GetReal") then
+            local highlight = Instance.new("Highlight")
+            highlight.RobloxLocked = true
+            highlight.Name = "GetReal"
+            highlight.Adornee = target.Character
+            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlight.FillColor = color
+            highlight.Parent = target.Character
+        else
+            target.Character.GetReal.FillColor = color
         end
-        game.Players.LocalPlayer.Character.Animate.Disabled = true
-        wait(0.1)
-        game.Players.LocalPlayer.Character.Animate.Disabled = false
     end
 end
 
-
-ClientSection:CreateButton({
-    Title = "Godmode",
-    Callback = function()
-        GodMode()
+while task.wait() do
+    for i, v in pairs(players:GetPlayers()) do
+        if v ~= plr then
+            esp(v, _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor))
+        end
     end
+end
+  	end    
 })
-
-ClientSection:CreateButton({
-	Title = "Force respawn",
-	Callback = function(state)
-		Character.Head:Remove();
-		Humanoid.BreakJointsOnDeath = false;
-		Humanoid.Health = 0;
-	end;
-});
-ClientSection:CreateButton({
-    Title = "Get all emotes",
-    Callback = function()
-		require(EmoteModule).GeneratePage(EmoteList,Emotes,'Free Emotes');
-    end
-})
-local folder = Instance.new("Folder",CoreGui);
-folder.Name = "ESP Holder";
-	
-local function AddBillboard(player)
-    local billboard = Instance.new("BillboardGui",folder);
-    billboard.Name = player.Name;
-    billboard.AlwaysOnTop = true;
-    billboard.Size = UDim2.fromOffset(200,50);
-    billboard.ExtentsOffset = Vector3.new(0,3,0);
-    billboard.Enabled = false
-    local textLabel = Instance.new("TextLabel",billboard);
-    textLabel.TextSize = 20;
-    textLabel.Text = player.Name;
-    textLabel.Font = Enum.Font.SourceSans;
-    textLabel.BackgroundTransparency = 1;
-    textLabel.Size = UDim2.fromScale(1,1);
-
-    if getgenv().AllEsp then
-        billboard.Enabled = true
-    end
-    repeat
-        wait()
-        pcall(function()
-            billboard.Adornee = player.Character.Head;
-            if player.Character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife") then
-                textLabel.TextColor3 = Color3.new(1,0,0);
-                if not billboard.Enabled and getgenv().MurderEsp then
-                    billboard.Enabled = true
-                end
-            elseif player.Character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun") then
-                textLabel.TextColor3 = Color3.new(0,0,1);
-                if not billboard.Enabled and getgenv().SheriffEsp then
-                    billboard.Enabled = true
-                end
-            else
-                textLabel.TextColor3 = Color3.new(0,1,0);
-            end;
-        end);
-    until not player.Parent;
-end;
-for _,player in pairs(Players:GetPlayers()) do
-    if player ~= Client then
-        coroutine.wrap(AddBillboard)(player);
-    end;
-end;
-Players.PlayerAdded:Connect(AddBillboard);
-
-Players.PlayerRemoving:Connect(function(player)
-    folder[player.Name]:Destroy();
-end);
-
-
-WorldSection:CreateToggle({
-	Title = "Player ESP",
-	Default = false,
-	Callback = function(state)
-        getgenv().AllEsp = state;
-        for i, v in pairs(folder:GetChildren()) do
-            if v:IsA("BillboardGui") and Players[tostring(v.Name)] then
-                if getgenv().AllEsp then
-                    v.Enabled = true;
-                else
-                    v.Enabled = false;
-                end;
-            end;
-        end;
-	end
-});
-
-WorldSection:CreateToggle({
-	Title = "Murderer ESP",
-	Default = false,
-	Callback = function(state)
-        getgenv().MurderEsp = state;
-        while getgenv().MurderEsp do
-            wait()
-            pcall(function()
-                for i, v in pairs(folder:GetChildren()) do
-                    if v:IsA("BillboardGui") and Players[tostring(v.Name)] then
-                        if Players[tostring(v.Name)].Character:FindFirstChild("Knife") or Players[tostring(v.Name)].Backpack:FindFirstChild("Knife")  then
-                            if getgenv().MurderEsp then
-                                v.Enabled = true;
-                            else
-                                v.Enabled = false;
-                            end;
-                        end
-                    end;
-                end;
-            end);
-        end;
-	end
-});
-WorldSection:CreateToggle({
-	Title = "Sheriff ESP",
-	Default = false,
-	Callback = function(state)
-        getgenv().SheriffEsp = state;
-        while getgenv().SheriffEsp do
-            wait()
-            pcall(function()
-                for i, v in pairs(folder:GetChildren()) do
-                    if v:IsA("BillboardGui") and Players[tostring(v.Name)] then
-                        if Players[tostring(v.Name)].Character:FindFirstChild("Gun") or Players[tostring(v.Name)].Backpack:FindFirstChild("Gun")  then
-                            if getgenv().SheriffEsp then
-                                v.Enabled = true;
-                            else
-                                v.Enabled = false;
-                            end;
-                        end
-                    end;
-                end;
-            end);
-        end;
-	end
-});
-SheriffSection:CreateToggle({
-	Title = "Gun ESP",
-	Default = false,
-    Order = 50,
-	Callback = function(state)
-        getgenv().GunESP = state;
-	end
-});
-
-coroutine.wrap(function()
-    RunService.RenderStepped:Connect(function()
-        pcall(function()
-            if getgenv().GunESP then
-                local gundrop = Workspace:FindFirstChild("GunDrop");
-                GunHighlight.Adornee = gundrop;
-                GunHandleAdornment.Adornee = gundrop;
-                if gundrop then 
-                    GunHandleAdornment.Size = gundrop.Size + Vector3.new(0.05, 0.05, 0.05) ;
-                end;
-        
-                GunHighlight.Enabled = getgenv().GunESP;
-                GunHandleAdornment.Visible = getgenv().GunESP;
-            end;
-        end);
-    end);
-end)();
