@@ -59,7 +59,7 @@ end
 
 function Notification(text)
 game.StarterGui:SetCore("SendNotification", {
-  Title = "NIGHT HUB"; -- the title (ofc)
+  Title = "New HUB"; -- the title (ofc)
   Text = text; -- what the text says (ofc)
   Icon = "rbxassetid://13486422974"; -- the image if u want.
   Duration = 3; -- how long the notification should in secounds
