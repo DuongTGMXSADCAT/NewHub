@@ -7,7 +7,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Tổng Hợp Hack", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Window:MakeTab({
 	Name = "Main",
-	Icon = "rbxassetid://4483345978",
+	Icon = "rbxassetid://12235359506"
 	PremiumOnly = false
 })
 Tab:AddButton({
@@ -108,7 +108,7 @@ Tab:AddButton({
 })
 local Tab = Window:MakeTab({
 	Name = "Race V4",
-	Icon = "rbxassetid://4413345998",
+	Icon = "rbxassetid://12235359506"
 	PremiumOnly = false
 })
 Tab:AddButton({
@@ -132,7 +132,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Hirimii/HirimiHub/mai
 })
 local Tab = Window:MakeTab({
 	Name = "Auto Bounty",
-	Icon = "rbxassetid://4483941998",
+	Icon = "rbxassetid://12235359506"
 	PremiumOnly = false
 })
 Tab:AddButton({
@@ -543,7 +543,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitin
 end
 local Tab = Window:MakeTab({
 	Name = "Key",
-	Icon = "rbxassetid://4483345958",
+	Icon = "rbxassetid://12235359506"
 	PremiumOnly = false
 })
 Tab:AddTextbox({
