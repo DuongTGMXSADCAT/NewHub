@@ -562,10 +562,15 @@ Tab:AddButton({
   	end    
 end
 })
+local Tab = Window:MakeTab({
+	Name = "Get Key ",
+	Icon = "rbxassetid://4483345978",
+	PremiumOnly = false
+})
 Tab:AddButton({
-	Name = "Button!",
+	Name = "Get Key!",
 	Callback = function()
-	setclipboard("https://discord.gg/4D66fXXXS6")
-      		print("button pressed")
+      		setclipboard("https://discord.gg/4D66fXXXS6")
   	end    
 })
+OrionLib:Init()
