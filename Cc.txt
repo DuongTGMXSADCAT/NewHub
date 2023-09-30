@@ -1,0 +1,184 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Hack Many Game [Beta]", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+	Name = "Devolop",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddLabel("Script Make By CADSAT")
+Tab:AddLabel("I Come From VietNam")
+Tab:AddLabel("My Discord:https://discord.gg/azcUGYgPfB")
+local Tab = Window:MakeTab({
+	Name = "Blox Fruit",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddButton({
+	Name = "Pando Hub",
+	Callback = function()
+      	
+loadstring(game:HttpGet('https://raw.githubusercontent.com/REWzaKunGz1/premium/main/PadoHub'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Mukuro Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xQuartyx/DonateMe/main/OldBf"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Uranium Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Augustzyzx/UraniumMobile/main/UraniumKak.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Master Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Cyber-Nonename/LoliHubV2/main/V2LoliHub"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Padupo Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Padupo/mrbee/main/ZeeHUB-hoapoytv'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Xeter Hub",
+	Callback = function()
+      		
+loadstring(game: HttpGet ("https://raw.githubusercontent.com/scriptpastebin/raw/main/Xeter"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Hoho Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Mtriet Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Minhtriettt/Free-Script/main/MTriet-Hub.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Mingaming Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet"https://raw.githubusercontent.com/PNguyen0199/MinGamingHub/main/MinGamingNew.lua")()
+  	end    
+})
+
+Tab:AddLabel("T Không Biết Tên Hub này=]")
+Tab:AddButton({
+	Name = "Cak Hub",
+	Callback = function()
+      	
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CokkaScript/Loadstring/main/CokkaHub.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Hopper Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GodClass/EpicScripts/main/HakiHopper.txt"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Free Fire Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Padupo/scrnohop/main/FreeFrai'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Mama Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MAMAhub1/Mmahub/main/README.md"))()
+  	end    
+})
+local Tab = Window:MakeTab({
+	Name = "Blade Ball",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddButton({
+	Name = "Api Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/8555f27454c952fb960ba00a4cd3f8f6.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Kidachi Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KidichiHB/Kidachi/main/Scripts/BladeBall"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Kay Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/romkich09/keySystem/main/mainKey'),true))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Hight Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThatSick/HighlightMM2/main/Main"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Hikax Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Hikkaxxx/blox/main/obfuscated-2495.lua'))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Syr Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CorruptedClan/BackOnTop/main/SyrBladeBall.lua.txt"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Win Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Winnablez/Winnable/main/Loader")){}
+  	end    
+})
+Tab:AddButton({
+	Name = "Reaper Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AyoReaper/Reaper-Hub/main/loader.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Cat Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/SourceLua/main/Blade_Ball.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "Circle Hub",
+	Callback = function()
+      		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/Circle"))()
+  	end    
+})
